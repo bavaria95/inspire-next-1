@@ -1,0 +1,95 @@
+/**
+ *
+ * This file is part of INSPIRE.
+ * Copyright (C) 2015, 2016 CERN.
+ *
+ * INSPIRE is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * Invenio is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Invenio; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+.modal-header {
+    background-color: $dark-blue;
+    color: white;
+
+    .close {
+        color: white;
+        opacity: 1;
+    }
+}
+
+.modal-dialog {
+    width: 60%;
+    margin: 0px;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+}
+
+.modal.fade .modal-dialog {
+    -webkit-transform: translate(-50%, -100%);
+    -ms-transform: translate(-50%, -100%);
+    -o-transform: translate(-50%, -100%);
+    transform: translate(-50%, -100%);
+    -webkit-transition: -webkit-transform 0.3s ease-out;
+    -moz-transition: -moz-transform 0.3s ease-out;
+    -o-transition: -o-transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
+}
+
+.modal.in .modal-dialog {
+    -webkit-transform: translate(-50%, -30%);
+    -ms-transform: translate(-50%, -30%);
+    -o-transform: translate(-50%, -30%);
+    transform: translate(-50%, -30%);
+}
+
+.modal-footer {
+    padding: 8px 15px;
+}
+
+.modal-content {
+    overflow: auto;
+}
+
+.modal-footer button {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#feedbackModalError {
+    margin-bottom: 8px;
+}
+
+#feedbackModalEmail {
+    margin-bottom: 8px;
+}
+
+#feedbackModalForm p {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+#feedbackModalForm .control-label {
+    font-weight: normal;
+    color: $dark-blue;
+}
+
+#feedbackModalForm .control-label.required:after {
+    content: " *";
+    color: $brand-warning;
+}
+
+#feedbackModalFeedback {
+    height: 100px;
+}

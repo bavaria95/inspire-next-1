@@ -1,0 +1,77 @@
+{#
+# This file is part of INSPIRE.
+# Copyright (C) 2016 CERN.
+#
+# INSPIRE is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# INSPIRE is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with INSPIRE; if not, write to the Free Software Foundation, Inc.,
+# 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#
+# In applying this license, CERN does not
+# waive the privileges and immunities granted to it by virtue of its status
+# as an Intergovernmental Organization or submit itself to any jurisdiction.
+#}
+
+{% extends 'search/search.html' %}
+
+{%- block search_facets %}
+<div class="col-md-3 visible-md visible-lg data-facet" id="facetparent">
+  <div class="facet" id="facet_list" data-clampedwidth="#facetparent">
+    <invenio-search-facets
+      template="{{ url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/data/facets.html') }}">
+    </invenio-search-facets>
+  </div>
+</div>
+{%- endblock search_facets %}
+
+{%- block search_pagination_top %}
+<div class="col-md-6 col-sm-12 text-center">
+  <invenio-search-pagination
+    template="{{ url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/data/pagination.html') }}">
+  </invenio-search-pagination>
+</div>
+{%- endblock search_pagination_top %}
+
+{%- block search_sort %}
+{%- set sort_options = config.get('RECORDS_REST_SORT_OPTIONS', {}).get('record-data') %}
+{%- if sort_options %}
+<div class="col-md-3 col-sm-12 text-right">
+  {%- block search_sort_select scoped %}
+  Sort by:
+  <invenio-search-select-box
+    sort-key="sort_by"
+    default-option="{{ sort_options|default_sortoption }}"
+    available-options='{{ sort_options|format_sortoptions|safe }}'
+    template="{{ url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/selectbox.html') }}"
+  >
+  </invenio-search-select-box>
+  {%- endblock search_sort_select %}
+  {%- block search_sort_order scoped %}
+  {%- endblock search_sort_order %}
+</div>
+{%- endif %}
+{%- endblock search_sort %}
+
+{%- block search_count %}
+<div class="col-md-3 col-sm-12">
+  <invenio-search-count
+    template="{{ url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/data/count.html') }}">
+  </invenio-search-count>
+</div>
+{%- endblock search_count %}
+
+{%- block search_results %}
+<invenio-search-results
+  template="{{ url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/data/results.html') }}">
+</invenio-search-results>
+
+{%- endblock search_results %}

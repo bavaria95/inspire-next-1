@@ -1,0 +1,61 @@
+{#
+## This file is part of INSPIRE.
+## Copyright (C) 2014, 2015, 2016 CERN.
+##
+## INSPIRE is free software; you can redistribute it and/or
+## modify it under the terms of the GNU General Public License as
+## published by the Free Software Foundation; either version 2 of the
+## License, or (at your option) any later version.
+##
+## INSPIRE is distributed in the hope that it will be useful, but
+## WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+## General Public License for more details.
+##
+## You should have received a copy of the GNU General Public License
+## along with INSPIRE; if not, write to the Free Software Foundation, Inc.,
+## 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#}
+
+{% extends "inspirehep_theme/page.html" %}
+{%set body_css_classes=['holding-pen']%}
+{%- block css %}
+{{ super() }}
+{% assets "inspirehep_holding_css" %}
+<link href="{{ ASSET_URL }}" rel="stylesheet"/>
+{% endassets %}
+{%- endblock css %}
+
+
+{% block javascript %}
+{{ super() }}
+{% assets "inspirehep_holding_js" %}
+<script src="{{ ASSET_URL }}"></script>{% endassets %}
+{%- endblock javascript %}
+
+{% block page_banner %}
+<div class="holding-page-header">
+  <ul class="pull-left">
+    <li>Holding Pen</li>
+    <li><a href="/holdingpen">Dashboard</a></li>
+    <li><a href="/holdingpen/list">Search</a></li>
+    <li class="active" id="breadcrumb"></li>
+  </ul>
+
+  <div class="pull-right">
+    <form action="/holdingpen/list" class="hp-search-form">
+      <input type="text" name="q" placeholder="Search the holding pen">
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{%- block body -%}
+<div id="holding-pen">
+  <holding-pen
+    workflow-id="{{workflow_object.id}}"
+    template="{{ url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/inspirehep-holdingpen-js/details/details.html') }}">
+  </holding-pen>
+</div>
+{%- endblock -%}
+

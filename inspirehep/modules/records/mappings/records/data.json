@@ -1,0 +1,12 @@
+{
+    "mappings": {
+        "data": {
+            "_all": {
+                "enabled": true
+            },
+            "date_detection": false,
+            "numeric_detection": false,
+            "properties": {}
+        }
+    }
+}

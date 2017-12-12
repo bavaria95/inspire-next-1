@@ -1,0 +1,124 @@
+{#
+# This file is part of Invenio.
+# Copyright (C) 2014, 2015 CERN.
+#
+# Invenio is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# Invenio is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Invenio; if not, write to the Free Software Foundation, Inc.,
+# 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#}
+
+{% extends "inspirehep_theme/page.html" %}
+
+{%set body_css_classes=['holding-pen']%}
+
+{%- block css %}
+{{ super() }}
+{% assets "inspirehep_holding_css" %}
+<link href="{{ ASSET_URL }}" rel="stylesheet"/>
+{% endassets %}
+{%- endblock css %}
+
+{% block javascript %}
+{{ super() }}
+{% assets "inspirehep_holding_js" %}
+<script src="{{ ASSET_URL }}"></script>
+{% endassets %}
+
+{%- endblock javascript %}
+
+{% block page_banner %}
+<div class="holding-page-header">
+  <ul class="pull-left">
+    <li>Holding Pen</li>
+    <li><a href="/holdingpen">Dashboard</a></li>
+    <li class="active">Search</li>
+  </ul>
+
+  <div class="pull-right">
+    <form action="/holdingpen/list" class="hp-search-form">
+      <input type="text" name="q" placeholder="Search the holding pen"
+             {%if request.args.get('q') %}value="{{ request.args.get('q') }}"
+      {% endif %}>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{%- block body -%}
+<div id="holding-pen">
+  <holding-pen-batch-decision
+    template="{{ url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/inspirehep-holdingpen-js/batch-actions.html') }}">
+  </holding-pen-batch-decision>
+
+  <invenio-search search-endpoint="/api/holdingpen"
+                  search-extra-params='{"size": 10}'>
+    <div class="clearfix"></div>
+    <div class="row">
+      <div class="col-md-2 hp-filters facet-container">
+
+        <h4>Results per page</h4>
+
+        <holding-pen-template-handler
+          template="{{ url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/inspirehep-holdingpen-js/results/resultsize.html') }}">
+        </holding-pen-template-handler>
+
+
+        <h4>Sort by</h4>
+        {%- set sort_options = config.get('WORKFLOWS_UI_REST_SORT_OPTIONS',
+        {}).get('holdingpen') %}
+        {%- if sort_options %}
+        <invenio-search-select-box
+          sort-key="sort"
+          default-option="{{ sort_options|default_sortoption }}"
+          available-options='{{ sort_options|format_sortoptions|safe }}'
+          template="{{ url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/inspirehep-holdingpen-js/selectbox.html') }}">
+        </invenio-search-select-box>
+        {%- endif %}
+
+
+        <invenio-search-facets
+          template="{{ url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/inspirehep-holdingpen-js/facets.html') }}">
+        </invenio-search-facets>
+
+      </div>
+
+      <div class="col-md-10 result-list">
+        <div id="help-bar" class="row">
+
+          <div class="col-md-8 col-sm-8 col-xs-8 pull-left">
+            <p class="text-muted">Ctrl+A: Toggle Select all</p>
+          </div>
+
+          <div class="col-md-4 col-sm-4 col-xs-4 text-muted text-right">
+            <invenio-search-count
+              template="{{ url_for('static', filename='node_modules/invenio-search-js/dist/templates/count.html') }}">
+            </invenio-search-count>
+
+          </div>
+        </div>
+
+
+        <invenio-search-results
+          template="{{ url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/inspirehep-holdingpen-js/results/results.html') }}">
+        </invenio-search-results>
+
+        <div class="col-md-12 col-sm-12 text-center">
+          <invenio-search-pagination
+            template="{{ url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/pagination.html') }}">
+          </invenio-search-pagination>
+        </div>
+      </div>
+    </div>
+  </invenio-search>
+</div>
+{%- endblock -%}

@@ -1,0 +1,655 @@
+/**
+ *
+ * This file is part of INSPIRE.
+ * Copyright (C) 2015, 2016 CERN.
+
+ * INSPIRE is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * INSPIRE is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with INSPIRE; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+$facet-label-gray: #edf3f3;
+
+#search-results {
+
+  & > .col-md-3 {
+    width: 22%;
+  }
+
+  & > .col-md-9 {
+    width: 78%;
+  }
+}
+
+a.link-to-pdf, button.dropdown-cite, a#cite-all-format {
+  background-color: $clouds;
+  border: 0px;
+  color: $concrete;
+  font-weight: 500;
+}
+
+button.dropdown-cite:hover, a#cite-all-format:hover {
+  background-color: $blue-purple;
+  color: white;
+}
+
+h2.record-brief-title {
+  margin: 5px 0px 7px 0px;
+  font-size: 16px;
+}
+
+div.record-brief-subtitle {
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 400;
+  color: $concrete;
+}
+
+.record-brief-muted {
+  color: $concrete;
+}
+
+.record-brief-url {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+article.search-result {
+  margin-bottom: 10px;
+  position: relative; // To absolute position some elements inside
+
+  .panel-body {
+    padding: 5px;
+  }
+
+  &.record-brief-authors, &.record-brief-jobs {
+    .left-column {
+      min-height: 100px !important;
+      padding: 15px 0px 10px 0px !important;
+    }
+  }
+
+  &.record-brief-literature, &.record-brief-authors, &.record-brief-jobs {
+
+    .left-column {
+      position: static;
+      width: 80%;
+      border-right: 1px solid $silver;
+      padding: 15px 0px 10px 20px;
+      min-height: 125px;
+
+      .abstract {
+        color: $concrete;
+        margin-top: 5px;
+        padding-right: 20px;
+      }
+    }
+
+    .right-column {
+      position: static;
+      padding-top: 15px;
+      width: 20%;
+    }
+
+    .panel-body {
+      position: relative;
+      padding: 0px 10px 0px 30px; // No padding to show separator
+    }
+
+    input.checkbox-results {
+      position: absolute;
+      left: 7px;
+      top: 15px;
+    }
+
+    .citations-references {
+      position: absolute;
+      bottom: 10px;
+      font-size: 13px;
+    }
+
+    .glyphicon, .fa {
+        color: $concrete;
+        font-size: 11px;
+    }
+
+    h2.record-brief-title {
+      margin-top: 0px;
+    }
+  }
+
+}
+
+.record-brief-details {
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+/* Mobile styles
+-------------------------------------------------- */
+
+@media only screen and (max-width: 992px) {
+  .right-column {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: $screen-md-min) {
+
+  .abstract {
+    display: none;
+  }
+  #header-section {
+    padding-bottom: 50px;
+  }
+
+  .left-column {
+    border-right: 0px;
+  }
+  #search-results #results-control-panel .panel-body .row > div {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  #header-section {
+    padding-bottom: 100px;
+  }
+
+  #topnav {
+    padding-bottom: 45px;
+  }
+}
+
+/* Facet styles
+-------------------------------------------------- */
+
+#facetparent {
+  border-top: 3px solid;
+  background-color: white;
+  font-size: 13px;
+
+  h4 {
+    font-size: 16px;
+  }
+
+  a {
+    font-size: 13px;
+    text-decoration: underline;
+    margin-top: 2px;
+  }
+
+  input.include-facet {
+    top: 1px;
+  }
+
+  &.literature-facet {
+    border-color: $literature-collection;
+  }
+
+  &.authors-facet {
+    border-color: $authors-collection;
+  }
+
+  &.conferences-facet {
+    border-color: $conferences-collection;
+  }
+
+  &.jobs-facet {
+    border-color: $jobs-collection;
+  }
+
+  &.experiments-facet {
+    border-color: $experiments-collection;
+  }
+
+  &.institutions-facet {
+    border-color: $institutions-collection;
+  }
+
+  &.journals-facet {
+    border-color: $journals-collection;
+  }
+
+  &.data-facet {
+    border-color: $data-collection;
+  }
+}
+.checkbox-facets {
+  position: relative;
+  display: block;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.facet-container {
+  color: $concrete;
+
+
+  .facet-label {
+    color: $concrete;
+    letter-spacing: 0.04em;
+    width: 30%;
+    margin-top: 2px;
+  }
+
+  .facet-count {
+    background-color: $facet-label-gray;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    display: inline-block;
+    overflow: hidden;
+    width: 20%;
+  }
+
+  .facet-title-truncate {
+    width: 65% !important;
+    float: left;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 4px;
+  }
+
+  label {
+    width: 100%;
+  }
+  .checkbox-container {
+    float: left;
+    width: auto;
+
+    .checkbox {
+      padding: 2px 3px;
+
+      &:hover {
+        background: $clouds;
+      }
+    }
+  }
+}
+
+#facet_list {
+  .panel-heading {
+    background-color: whiteSmoke;
+
+    a:after {
+      content: ' ';
+      float: right;
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      line-height: 14px;
+      vertical-align: text-top;
+      background-image: url("../img/glyphicons-halflings.png");
+      background-position: 14px 14px;
+      background-repeat: no-repeat;
+      /* list alt */
+      background-position: -264px -24px;
+    }
+  }
+
+  ul.list-unstyled ul.list-unstyled {
+    padding-left: 10px;
+    font-size: 90%;
+  }
+
+  .affix {
+    top: 28px;
+  }
+
+  .affix-bottom {
+    position: absolute;
+    top: auto;
+    bottom: 170px;
+  }
+}
+
+
+/* End of Facet styles
+-------------------------------------------------- */
+
+
+/* Number of results box styles
+-------------------------------------------------- */
+
+.total-results {
+  color: $orange;
+}
+
+#panel-form-group {
+  display: block;
+}
+
+.pagination {
+  margin: 0px;
+}
+
+#results-control-panel {
+  position: relative;
+  border-top: 3px solid $concrete;
+}
+
+#results-control-panel {
+  margin-bottom: 10px;
+
+  hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .panel-body {
+    padding: 10px 15px;
+  }
+  .dropdown {
+    display: inline-block;
+  }
+
+  .form-control {
+    display: inline-block;
+    width: auto;
+  }
+}
+
+.total-results {
+  &.literature-results {
+    color: $literature-collection;
+  }
+
+  &.authors-results {
+    color: $authors-collection;
+  }
+
+  &.conferences-results {
+    color: $conferences-collection;
+  }
+
+  &.jobs-results {
+    color: $jobs-collection;
+  }
+
+  &.experiments-results {
+    color: $experiments-collection;
+  }
+
+  &.institutions-results {
+    color: $institutions-collection;
+  }
+
+  &.journals-results {
+    color: $journals-collection;
+  }
+
+  &.data-results {
+    color: $data-collection;
+  }
+}
+
+
+#export-select-all {
+  position: absolute;
+  left: 8px;
+  bottom: 20px;
+}
+
+.tooltip.bottom .tooltip-inner {
+  padding: 5px;
+}
+
+.journals {
+
+  color: $blue;
+
+  #clear-facets-message {
+    color: $journals-collection;
+  }
+
+  .publisher {
+    font-size: .9em;
+  }
+}
+
+/* End of Number of results box styles
+-------------------------------------------------- */
+
+
+/* Collection-specific results styles
+-------------------------------------------------- */
+
+.record-brief-experiments {
+
+  #clear-facets-message {
+    color: $experiments-collection;
+  }
+
+  .place {
+    color: $concrete;
+    display: inline-block;
+    font-weight: 400;
+  }
+
+  .description {
+    color: $concrete;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 48px;
+    line-height: 17px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .record-brief-experiment-subtitle {
+    color: $blue;
+    font-size: 14px;
+  }
+}
+
+.record-brief-jobs {
+  color: $blue;
+
+  #clear-facets-message {
+    color: $jobs-collection;
+  }
+  .deadline-header {
+    margin-top: 10px;
+    color: $concrete;
+    font-weight: bolder;
+    text-transform: uppercase;
+
+    &.closed {
+      color: $alizarin;
+    }
+
+    &.open {
+      color: $turquoise;
+    }
+  }
+
+  .deadline-date {
+    font-weight: bolder;
+    color: $concrete;
+
+    &.open {
+      color: $blue;
+    }
+  }
+
+}
+
+.research-area {
+  list-style: none;
+  -webkit-padding-start: 0;
+  font-size: .9em;
+  font-weight: bolder;
+  color: $grey !important;
+
+  li {
+    display: inline-block;
+    text-align: center;
+    background-color: $clouds;
+
+    padding: 2px 4px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    border-radius: 3px;
+  }
+}
+
+.record-brief-conferences {
+  color: $blue;
+
+  #clear-facets-message {
+    color: $conferences-collection;
+  }
+
+  .series {
+    color: $concrete;
+
+    a {
+      font-weight: bolder;
+    }
+  }
+
+  i {
+    color: $concrete;
+  }
+
+  .conf-place, .conf-date {
+    border-radius: 3px;
+    display: inline-block;
+  }
+}
+
+.record-brief-data {
+  a:after {
+    display: inline-block;
+  }
+  .data-table-count {
+    padding: 5px 0;
+    color: $concrete;
+  }
+
+  .data-brief {
+    padding-left: 20px;
+    padding-top: 5px;
+    font-size: 1em;
+  }
+
+  .hep-content {
+    padding-top: 65px;
+  }
+
+  .data-more {
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+
+  .facet-type {
+    margin-bottom: 30px;
+  }
+
+  .search-results {
+    padding-top: 80px;
+  }
+
+  .record-header {
+    font-weight: bolder;
+  }
+
+  .record-abstract {
+    color: $midnight-blue;
+  }
+
+  .truncated-record-abstract {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1em;
+    max-height: 48px; /* fallback */
+    line-height: 21px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    color: $concrete;
+  }
+
+}
+
+/* End of Collection-specific results styles
+-------------------------------------------------- */
+
+
+/* Top search bar styles
+-------------------------------------------------- */
+
+
+@media (min-width: 600px) {
+
+  #top-search-bar #searchform {
+    .navbar-form {
+      display: flex;
+    }
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+
+  #top-search-bar {
+
+    .navbar-form .input-group .form-control {
+      width: 100%!important;
+    }
+
+    .navbar-form .input-group > .form-control {
+      width: 100%;
+    }
+  }
+}
+
+#top-search-bar #searchform {
+
+  #searchform-input-group {
+    width: 100%;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+
+  #top-search-bar {
+
+    .navbar-form .input-group .form-control {
+      width: 100%;
+    }
+
+    .navbar-form .input-group > .form-control {
+      width: 100%;
+    }
+  }
+}
+
+#top-search-bar #searchform {
+
+  #searchform-input-group {
+    width: 100%;
+  }
+}
+
+/* End of Top search bar styles
+-------------------------------------------------- */

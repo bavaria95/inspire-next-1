@@ -1,0 +1,119 @@
+/**
+ * -*- mode: text; coding: utf-8; -*-
+ *
+ * This file is part of INSPIRE.
+ * Copyright (C) 2014, 2015 CERN.
+
+ * INSPIRE is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+
+ * Invenio is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Invenio; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+// FlatUI Colors - https://flatuicolors.com/
+
+$turquoise: #1abc9c;
+$green-sea: #16a085;
+$pete-river: #3498db;
+$belize-hole: #2980b9;
+$amethyst: #9b59b6;
+$wisteria: #8e44ad;
+$blue-haze: #8aa2ba;
+$wet-asphalt: #34495e;
+$midnight-blue: #2c3e50;
+$dark-blue:#1D2D3D;
+$sun-flower: #f1c40f;
+$orange: #f39c12;
+$carrot: #e67e22;
+$pumpkin: #d35400;
+$alizarin: #e74c3c;
+$pomegranate: #c0392b;
+$clouds: #ecf0f1;
+$silver: #bdc3c7;
+$concrete: #95a5a6;
+$asbestos: #7f8c8d;
+
+$blue: $midnight-blue;
+$blue-purple: $wet-asphalt;
+$literature-collection: $carrot;
+$authors-collection: $belize-hole;
+$conferences-collection: $sun-flower;
+$jobs-collection: $turquoise;
+$data-collection: $amethyst;
+$experiments-collection: $alizarin;
+$institutions-collection: $green-sea;
+$journals-collection: $concrete;
+$page-background: $clouds;
+
+// Buttons colors
+
+// Background color for buttons
+// (Font) color for buttons
+$grey: $asbestos;
+
+//== Colors
+//
+//## Brand colors for use across Inspire.
+
+$blue-light: $pete-river;
+$blue-dark: $belize-hole;
+$brand-primary: $midnight-blue;
+$brand-success: $turquoise;
+$brand-warning: $carrot;
+$brand-info: $pete-river;
+
+//== Sticky footer height
+
+$footer-height: 200px;
+
+//== Scaffolding
+//
+//## Settings for some of the most global styles.
+
+//** Background color for `<body>`.
+
+$body-bg: $clouds;
+
+//== Wells
+//
+//##
+
+$well-bg: white;
+
+//== Links
+//
+//##
+
+$link-color: $belize-hole;
+$alternate-link-color: $turquoise;
+
+//== Navbar
+//
+//##
+
+// Basics of a navbar
+
+$navbar-inverse-bg: $dark-blue;
+$navbar-inverse-border: darken($navbar-inverse-bg, 6.5%);
+$navbar-height: 60px;
+
+// Navbar links
+
+$navbar-inverse-link-active-bg: transparent;
+
+$navbar-inverse-link-color: white;
+
+//== Panels
+//
+//##
+
+$panel-default-heading-bg: $dark-blue;

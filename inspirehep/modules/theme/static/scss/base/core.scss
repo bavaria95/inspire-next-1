@@ -1,0 +1,213 @@
+/*
+ *
+ * This file is part of INSPIRE.
+ * Copyright (C) 2014 CERN.
+
+ * INSPIRE is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * Invenio is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Invenio; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+/*
+Generic core styles that are included in all INSPIRE pages.
+*/
+
+/* ===========================================================
+    Document Setup (body, common classes, structure etc)
+============================================================ */
+
+.main-container {
+  padding-bottom: 50px;
+
+  @media screen and (max-width: $screen-md-min) {
+      margin-top: 0;
+  }
+}
+
+.alert-form-success {
+  margin-top: 30px;
+}
+
+/* Breadcrums
+================================================== */
+
+.breadcrumb {
+  background-color: transparent;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -o-border-radius: 0;
+}
+
+.breadcrumb > li + li:before {
+  /* change breadcrumb separator to >> symbol */
+  content: "\00BB";
+  color: #aaa;
+}
+
+.breadcrumb > li:first-child {
+  margin-left: -15px;
+}
+
+/* Toast message styling
+================================================== */
+
+.toast-top-right {
+  top: 128px !important;
+  right: 30px !important;
+}
+
+/* External links styling
+================================================== */
+
+body.show-external-link-icons {
+    a[href^="http://"]:after, a[href^="https://"]:after {
+      content: "\f08e";
+      font-size: 80%;
+      font-family: FontAwesome;
+      font-weight: normal;
+      font-style: normal;
+      display: inline-block;
+      text-decoration: none;
+      padding-left: 3px;
+    }
+}
+
+a.no-external-icon:after {
+  content: "";
+  padding-left: 0;
+  display: inline;
+}
+
+/* AngularJS special classes
+================================================== */
+a[ng-click] {
+  cursor: pointer;
+}
+
+/* Utility classes
+================================================== */
+.hide-element {
+    display: none;
+}
+
+.chip {
+  display: inline-block;
+  height: 24px;
+  font-size: 11px;
+  font-weight: 500;
+  color: $asbestos;
+  line-height: 24px;
+  padding: 0 12px;
+  border-radius: 16px;
+  margin-bottom: 2px;
+  margin-right: 2px;
+  background-color: $clouds;
+  overflow-x: auto;
+  vertical-align: middle;
+
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba(44, 62, 80, 0.8);
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  &:hover {
+
+    &.chip-conferences {
+      background-color: $conferences-collection;
+    }
+
+    &.chip-literature {
+      background-color: $literature-collection;
+    }
+
+    a {
+      color: white;
+    }
+  }
+}
+
+
+/* Personalize angular-loading-bar
+================================================== */
+#loading-bar .bar {
+  -webkit-transition: width 350ms;
+  -moz-transition: width 350ms;
+  -o-transition: width 350ms;
+  transition: width 350ms;
+
+  background: white;
+  position: fixed;
+  z-index: 10002;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-bottom-right-radius: 1px;
+  border-top-right-radius: 1px;
+}
+
+/* Fancy blur effect */
+#loading-bar .peg {
+  position: absolute;
+  width: 70px;
+  right: 0;
+  top: 0;
+  height: 2px;
+  opacity: .45;
+  -moz-box-shadow: white 1px 0 6px 1px;
+  -ms-box-shadow: white 1px 0 6px 1px;
+  -webkit-box-shadow: white 1px 0 6px 1px;
+  box-shadow: white 1px 0 6px 1px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+
+
+#loading-bar-spinner .spinner-icon {
+  width: 14px;
+  height: 14px;
+
+  border:  solid 2px transparent;
+  border-top-color:  white;
+  border-left-color: white;
+  border-radius: 50%;
+
+  -webkit-animation: loading-bar-spinner 400ms linear infinite;
+  -moz-animation:    loading-bar-spinner 400ms linear infinite;
+  -ms-animation:     loading-bar-spinner 400ms linear infinite;
+  -o-animation:      loading-bar-spinner 400ms linear infinite;
+  animation:         loading-bar-spinner 400ms linear infinite;
+}
+
+
+.modal-body {
+    max-height: calc(100vh - 212px);
+    overflow-y: auto;
+}
+
+.modal-dialog {
+  width: 80%;
+}

@@ -1,0 +1,98 @@
+{% extends "inspirehep_theme/page.html" %}
+{%set body_css_classes=['holding-pen']%}
+{%- block css %}
+{{ super() }}
+{% assets "inspirehep_holding_css" %}
+<link href="{{ ASSET_URL }}" rel="stylesheet"/>
+{% endassets %}
+{%- endblock css %}
+
+{% block javascript %}
+{{ super() }}
+{% assets "inspirehep_holding_js" %}
+<script src="{{ ASSET_URL }}"></script>
+{% endassets %}
+{% endblock javascript %}
+
+
+{% block page_banner %}
+<div class="holding-page-header">
+  <ul class="pull-left">
+    <li>Holding Pen</li>
+    <li class="active">Dashboard
+    </li>
+  </ul>
+</div>
+{% endblock page_banner %}
+
+{%- block body -%}
+
+<div class="container-fluid" id="holding-pen">
+  <h3 class="text-center header-text">
+    OVERVIEW <a href="/holdingpen/list?size=10" class="btn btn-link"
+                style="color: #3498db;">View all</a>
+  </h3>
+
+
+  <div class="row overview-container">
+    <div class="col-md-3 col-sm-6">
+
+      <holding-pen-dashboard-item
+        template="{{url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/inspirehep-holdingpen-js/dashboard_stat_block.html')}}"
+        filter_string="workflow_name=Author&is-update=false"
+        secondary_filter="status"
+        section_title="New Authors">
+      </holding-pen-dashboard-item>
+
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+
+      <holding-pen-dashboard-item
+        template="{{url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/inspirehep-holdingpen-js/dashboard_stat_block.html')}}"
+        filter_string="workflow_name=Author&is-update=true"
+        secondary_filter="status"
+        section_title="Author Updates">
+      </holding-pen-dashboard-item>
+
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+      <div class="overview-item">
+
+        <holding-pen-dashboard-item
+          template="{{url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/inspirehep-holdingpen-js/dashboard_stat_block.html')}}"
+          filter_string="source=submitter&workflow_name=HEP"
+          secondary_filter="status"
+          section_title="New Literature Submissions">
+        </holding-pen-dashboard-item>
+
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+
+      <holding-pen-dashboard-item
+        template="{{url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/inspirehep-holdingpen-js/dashboard_stat_block.html')}}"
+        filter_string="source=arXiv&workflow_name=HEP"
+        secondary_filter="status"
+        section_title="arxiv harvests">
+      </holding-pen-dashboard-item>
+
+    </div>
+  </div>
+
+  <div class="row overview-container">
+
+    <div class="col-md-3 col-sm-6">
+
+        <holding-pen-dashboard-item
+          template="{{url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/inspirehep-holdingpen-js/dashboard_stat_block.html')}}"
+          filter_string=""
+          secondary_filter="status"
+          section_title="all harvests">
+        </holding-pen-dashboard-item>
+    </div>
+  </div>
+</div>
+{%- endblock -%}

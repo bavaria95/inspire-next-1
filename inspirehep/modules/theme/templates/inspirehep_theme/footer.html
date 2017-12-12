@@ -1,0 +1,61 @@
+{#
+## This file is part of INSPIRE.
+## Copyright (C) 2014 CERN.
+##
+## INSPIRE is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+##
+## INSPIRE is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+## GNU General Public License for more details.
+##
+## You should have received a copy of the GNU General Public License
+## along with INSPIRE. If not, see <http://www.gnu.org/licenses/>.
+##
+## In applying this licence, CERN does not waive the privileges and immunities
+## granted to it by virtue of its status as an Intergovernmental Organization
+## or submit itself to any jurisdiction.
+#}
+
+{#
+## This file contains footer part of main page template.
+##
+## Usage:
+## {% include 'inspirehep_theme/footer.html' %}
+#}
+
+<section class="custom-footer">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <h4 class="footer-heading">About INSPIRE</h4>
+      <hr class="footer-divider">
+      <ul class="list-unstyled">
+        <li><a class="footer" href="http://inspirehep.net/info/general/terms-of-use">{{- _("Terms of use") -}}</a></li>
+        <li><a class="footer" href="http://inspirehep.net/info/general/privacy-policy">{{- _("Privacy policy") -}}</a></li>
+      </ul>
+    </div>
+
+    <div class="col-xs-4">
+      <h4 class="footer-heading">Follow Us</h4>
+      <hr class="footer-divider">
+      <ul class="list-unstyled">
+        <li><a class="footer" href="https://twitter.com/inspirehep" target="_blank">Twitter</a></li>
+        <li><a class="footer" href="http://blog.inspirehep.net/" target="_blank">Blog</a></li>
+      </ul>
+    </div>
+
+    <div class="col-xs-4">
+      <h4 class="footer-heading">Technology</h4>
+      <hr class="footer-divider">
+      <ul class="list-unstyled">
+        <li><a class="footer" href="{{ url_for('inspirehep_theme.index') }}">INSPIRE Labs</a></li>
+        <li>{{ _("Powered by") }} <a class="footer" href="http://invenio-software.org/" target="_blank">Invenio</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>

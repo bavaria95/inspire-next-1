@@ -1,0 +1,41 @@
+{#
+# This file is part of INSPIRE.
+# Copyright (C) 2015, 2016 CERN.
+#
+# INSPIRE is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# INSPIRE is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with INSPIRE; if not, write to the Free Software Foundation, Inc.,
+# 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#}
+
+{% if collection is defined %}
+  {% set collection_name = collection | sanitize_collection_name %}
+{% else %}
+  {% set collection_name = request.url | find_collection_from_url %}
+{% endif %}
+
+<input autocomplete="off"
+  id="search"
+  data-items="4"
+  name="q"
+  class="form-control"
+  type="text"
+  tabindex="1"
+  value="{{ request.args.get('q', '') }}"
+  placeholder="Search {{ collection_name }}"
+  autofocus
+>
+<span class="input-group-btn">
+  <button tabindex="2" type="submit" class="btn btn-primary btn-inline-icon-hide-sm {{ collection_name }}-search-button" id="search-form-button">
+    <i class="glyphicon glyphicon-search search-glyphicon"></i>
+  </button>
+</span>

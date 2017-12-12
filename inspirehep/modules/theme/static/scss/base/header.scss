@@ -1,0 +1,883 @@
+/**
+ *
+ * This file is part of INSPIRE.
+ * Copyright (C) 2014, 2015, 2016 CERN.
+
+ * INSPIRE is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * Invenio is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Invenio; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+ /* Header styles
+-------------------------------------------------- */
+
+$light-blue: lighten(#2c3e50, 15%);
+
+body {
+    padding-top: 64px;
+}
+
+.navbar-fixed-top {
+
+    .navbar-fixed-top .navbar-collapse {
+        max-height: none;
+    }
+
+    .navbar-brand {
+        padding: 2px 15px;
+        height: 50px;
+    }
+}
+#topnav {
+    li.active {
+        border-bottom: 2px solid $btn-warning-bg;
+    }
+
+    .navbar-header {
+        float: none;
+    }
+}
+.navbar {
+    .divider-vertical {
+        height: 30px;
+        margin: 9px 9px;
+        border-right: 1px solid #cccccc;
+        border-left: 1px solid #cccccc;
+    }
+}
+
+.custom-dropdown-header{
+    color: $link-color;
+    display: block;
+}
+
+@media (min-width: $screen-md-min) {
+    #mobile-menu {
+        display: none;
+    }
+
+    .navbar-nav > li > a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    /* Dropdown menu in Header styles
+    -------------------------------------------------- */
+    .dropdown-menu-arrow:before {
+        position: absolute;
+        top: -7px;
+        left: 159px;
+        display: inline-block;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid #ccc;
+        border-left: 7px solid transparent;
+        border-bottom-color: rgba(0, 0, 0, 0.2);
+        content: '';
+    }
+
+    .dropdown-menu-arrow:after {
+        position: absolute;
+        top: -6px;
+        left: 160px;
+        display: inline-block;
+        border-right: $border-radius-large solid transparent;
+        border-bottom: $border-radius-large solid #ffffff;
+        border-left: $border-radius-large solid transparent;
+        content: '';
+    }
+
+    #header-links .top-header-dropdown > ul li {
+        padding: 5px;
+    }
+}
+
+@media (max-width: $screen-md-min) {
+    .navbar-collapse {
+
+        max-height: none;
+
+        .nav {
+            & > .divider-vertical {
+                display: none;
+            }
+        }
+    }
+
+    body {
+        padding-top: 51px;
+    }
+}
+
+.navbar-nav > li > a {
+    line-height: 40px;
+    color: #f8f8f8;
+}
+
+#collections-section #collections-nav {
+
+    position: fixed;
+    background-color: white;
+    z-index: 500;
+    height: 30px;
+    margin-bottom: 45px;
+    box-shadow: -3px -3px 3px 0 rgba(0,0,0,0.19) , 3px 0 3px 0 rgba(0,0,0,0.19) , 0 3px 3px 0 rgba(0,0,0,0.23);
+    width: 100%;
+
+    a {
+        color: black;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        font-size: 12px;
+        width: 12.50%;
+        text-align: center;
+        float: left;
+        padding: 7px 1%;
+        border-right: 1px solid rgba(0,0,0,0.2);
+        -webkit-transition: color .15s cubic-bezier(.33,.66,.66,1);
+        transition: color .15s cubic-bezier(.33,.66,.66,1);
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    &.navbar-fixed-top {
+        top: 65px;
+    }
+
+    .active, a:hover {
+
+        color: white;
+
+        &#literature-collection {
+            background-color: $literature-collection;
+        }
+
+        &#authors-collection {
+            background-color: $authors-collection;
+        }
+
+        &#data-collection {
+            background-color: $data-collection;
+        }
+
+        &#conferences-collection {
+            background-color: $conferences-collection;
+        }
+
+        &#jobs-collection {
+            background-color: $jobs-collection;
+        }
+
+        &#institutions-collection {
+            background-color: $institutions-collection;
+        }
+
+        &#experiments-collection {
+            background-color: $experiments-collection;
+        }
+
+        &#journals-collection {
+            background-color: $journals-collection;
+        }
+    }
+}
+
+#topnav {
+    padding: 0 2.5%;
+    min-height: 50px;
+    border-bottom: 0px;
+
+    .navbar-toggle {
+        margin-top: 8px;
+        margin-bottom: 0;
+    }
+}
+
+// Logo customization
+
+#flask-bottom, #inspire-dot, #labs-text {
+
+    #literature-logo-collection & {
+        fill: $literature-collection !important;
+    }
+
+    #authors-logo-collection & {
+        fill: $authors-collection !important;
+    }
+
+    #conferences-logo-collection & {
+        fill: $conferences-collection !important;
+    }
+
+    #jobs-logo-collection & {
+        fill: $jobs-collection !important;
+    }
+
+    #experiments-logo-collection & {
+        fill: $experiments-collection !important;
+    }
+
+    #journals-logo-collection & {
+        fill: $journals-collection !important;
+    }
+
+    #institutions-logo-collection & {
+        fill: $institutions-collection !important;
+    }
+
+    #data-logo-collection & {
+        fill: $data-collection !important;
+    }
+}
+
+$darken-percent: 12%;
+#flask-top {
+
+    #literature-logo-collection & {
+        fill: darken($literature-collection, $darken-percent) !important;
+    }
+
+    #authors-logo-collection & {
+        fill: darken($authors-collection, $darken-percent) !important;
+    }
+
+    #conferences-logo-collection & {
+        fill: darken($conferences-collection, $darken-percent) !important;
+    }
+
+    #jobs-logo-collection & {
+        fill: darken($jobs-collection, $darken-percent) !important;
+    }
+
+    #experiments-logo-collection & {
+        fill: darken($experiments-collection, $darken-percent) !important;
+    }
+
+    #journals-logo-collection & {
+        fill: darken($journals-collection, $darken-percent) !important;
+    }
+
+    #institutions-logo-collection & {
+        fill: darken($institutions-collection, $darken-percent) !important;
+    }
+
+    #data-logo-collection & {
+        fill: darken($data-collection, $darken-percent) !important;
+    }
+}
+
+@media only screen and (max-width : $screen-sm-min){
+    .dropdown-menu:before {
+        display: none;
+    }
+
+    .dropdown-menu:after {
+        display: none;
+    }
+
+    .caret {
+        border-top: $border-radius-base solid transparent;
+        border-bottom: $border-radius-base solid transparent;
+        border-left: $border-radius-base  solid;
+    }
+
+    .dropdown .open .caret {
+        border-top: $border-radius-base solid;
+        border-right: $border-radius-base solid transparent;
+        border-left: $border-radius-base solid transparent;
+    }
+
+    .down-arrow.right-arrow-small-screen {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: 2px;
+        vertical-align: middle;
+        border-top: $border-radius-base solid transparent;
+        border-bottom: $border-radius-base solid transparent;
+        border-left: $border-radius-base solid ;
+    }
+}
+
+.btn-sign-out {
+    padding: 6px 22px;
+}
+
+.custom-list:last-child {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.custom-list:first-child {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+.down-arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid ;
+}
+
+.right-arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid ;
+}
+
+.overflow {
+    overflow-x: hidden;
+}
+
+.small-text {
+    font-size:small;
+}
+
+.list-group-item.list-item {
+    border: 0;
+}
+
+.dropdown-menu .divider.custom-divider-dropdown {
+    margin:0;
+}
+
+.dropdown-element-body {
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+
+@media only screen and (max-width : $screen-sm-min){
+    .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+        color: #000000;
+    }
+
+    .navbar .popover {
+        max-width: 100%;
+        position: relative;
+    }
+
+    .custom-popover {
+        height: 100%;
+    }
+}
+
+/* Nice dropdown menu*/
+.navbar .popover {
+    width: 400px;
+    -webkit-border-top-left-radius: 0px;
+    -webkit-border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    overflow: hidden;
+}
+
+.navbar .popover-content {
+    height: 269px;
+    text-align: center;
+}
+
+.navbar .dropdown-menu {
+    -webkit-border-top-right-radius: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-nav > li > .dropdown-menu {
+    margin-top: -6px;
+}
+
+
+.dropdown-menu-amazon {
+    position: fixed ;
+    display: block;
+    float: left;
+    left: 0 !important;
+    top: 55px;
+    z-index: 1000;
+    display: none;
+    list-style: none;
+    width: 40%;
+}
+
+
+/* In px according to bootstrap screen, not sure 100% if it is correct*/
+.custom-popover {
+    color:#ffffff;
+    max-width: 1200px;
+    height: 317px;
+}
+
+
+.navbar .popover {
+    width: 1200px;
+}
+
+.arrow-position {
+    float:right;
+    color: black;
+    margin-right: 7px;
+    margin-top: 10px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.popover-title {
+    border-bottom: 0;
+    border-radius: 0;
+    font-size:20px;
+}
+
+.custom-horizontal-line{
+    border-color:#cccccc;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.text-link-decoration {
+    text-decoration: none;
+    color:#444;
+}
+
+.text-link-decoration:hover {
+    text-decoration: none;
+    color:#444;
+}
+
+.font-p {
+    font-size:13px;
+}
+
+.popover-link {
+    color:#ffffff;
+}
+
+.popover-link:hover {
+    color:#cccccc;
+}
+
+a.external-link::after {
+    content: " \f08e";
+    font-family: FontAwesome;
+}
+
+// Mixin to set background color
+@mixin collection-background-color($background-color) {
+    background-color: $background-color;
+}
+
+#top-search-bar {
+
+    padding: 0;
+    height: 40px;
+
+    #searchform-input-group #search,
+    .navbar-form .input-group .form-control {
+        width: 100%;
+    }
+
+    #searchform .navbar-form {
+        margin-top: 8px;
+        margin-bottom: 0;
+        border: 0;
+        padding: 0;
+        box-shadow: none;
+        float: none !important;
+    }
+
+    #searchform-input-group {
+        padding-left: 60px;
+        padding-right: 30px;
+        display: table;
+        width: auto;
+        font-size: larger;
+        max-width: 850px;
+    }
+
+    .input-group span.twitter-typeahead .tt-dropdown-menu {
+        margin-top: 1px !important;
+        border-radius: 0;
+    }
+
+    .twitter-typeahead > input, #search {
+        border: 0;
+        border-radius: 0;
+        font-size: 17px;
+    }
+
+    button {
+        padding-left: 20px;
+        padding-right: 20px;
+        border: 0;
+        font-size: 16px;
+
+        // Top bar search button colours
+        &.literature-search-button {
+            @include collection-background-color($literature-collection);
+        }
+
+        &.authors-search-button {
+            @include collection-background-color($authors-collection);
+        }
+
+        &.conferences-search-button {
+            @include collection-background-color($conferences-collection);
+        }
+
+        &.jobs-search-button {
+            @include collection-background-color($jobs-collection);
+        }
+
+        &.experiments-search-button {
+            @include collection-background-color($experiments-collection);
+        }
+
+        &.institutions-search-button {
+            @include collection-background-color($institutions-collection);
+        }
+
+        &.journals-search-button {
+            @include collection-background-color($journals-collection);
+        }
+
+        &.data-search-button {
+            @include collection-background-color($data-collection);
+        }
+    }
+}
+
+@media (min-width: $screen-sm-max) {
+    #collections-section {
+        margin-top: -13px;
+        min-height: 50px;
+    }
+}
+
+@media (max-width: $screen-md-min) {
+    #collections-section {
+        margin-top: -1px;
+        display: none;
+    }
+}
+
+@media (min-width: $screen-sm-min) {
+    .navbar-nav>li>a {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+@media (min-width: $screen-md-min) {
+
+    #topnav-right {
+        float: right;
+    }
+
+    #user-info + .dropdown-menu {
+        margin-left: -100px;
+    }
+}
+
+// Switch to hamburger menu
+@media (max-width: $screen-md-min) {
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+
+    .navbar-nav {
+        float: none !important;
+        margin: 7.5px -15px;
+    }
+
+    .navbar-nav>li {
+        float: none;
+    }
+
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .navbar-text {
+        float: none;
+        margin: 15px 0;
+    }
+
+    /* since 3.1.0 */
+    .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+
+    .collapsing {
+        overflow: hidden !important;
+    }
+
+    #topnav {
+        padding-bottom: 0px;
+        height: auto;
+    }
+
+    #topnav-right {
+        width: 100%;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+}
+
+/* Mobile styles
+-------------------------------------------------- */
+@media only screen and (max-width : $screen-md-min) {
+
+    #header-section {
+        padding-bottom: 50px;
+    }
+
+    #topnav {
+
+        $speed: 200ms;
+        $easing: cubic-bezier(0.7, 0, 0, 0.7);
+
+        .navbar-toggle {
+          overflow: hidden;
+
+          .icon-bar {
+            transition: opacity, transform;
+            transition-duration: $speed;
+            transition-timing-function: $easing;
+          }
+
+          &:not(.collapsed) {
+            .icon-bar {
+              &:nth-child(1) {
+                transform: translateY(6px) rotate(45deg);
+              }
+              &:nth-child(2) {
+                opacity: 0;
+              }
+              &:nth-child(3) {
+                transform: translateY(-6px) rotate(-45deg);
+              }
+            }
+          }
+        }
+
+        padding: 0;
+
+        #topnav-right {
+
+            height:100vh !important;
+            max-height: none;
+            padding: 15px;
+
+            #mobile-menu {
+                margin: 0;
+            }
+
+            #header-links {
+
+                margin: 50px 0 0;
+
+                .dropdown-menu {
+                    position: static;
+                    float: none;
+                    width: auto;
+                    margin-top: 0;
+                    background-color: transparent;
+                    border: 0;
+                    box-shadow: none;
+                }
+
+                .dropdown-menu-arrow {
+                    li {
+                        background-color: white;
+                        float: none;
+                        padding-bottom: 10px;
+                    }
+                }
+
+                & > li {
+                    float: left;
+                    width: 50%;
+                }
+
+                li:last-of-type {
+                    width: auto;
+                }
+
+                li:nth-child(2n+3) {
+                    clear: both;
+                }
+
+                #tools-dropdown i,
+                #dropdown-links-stats i,
+                #header-submit-link:before {
+                    padding: 18px;
+                    background-color: $light-blue;
+                    border-radius: 50%;
+                    margin-right: 17px;;
+                    font-family: FontAwesome;
+                    content: "\f0ee";
+                }
+                #header-help-link:before {
+                    padding: 18px;
+                    background-color: $light-blue;
+                    border-radius: 50%;
+                    margin-right: 20px;
+                    padding-right: 20px;
+                    padding-left: 20px;
+                    font-family: FontAwesome;
+                    content: "\f128";
+                }
+
+                #mobile-sign-in {
+                    width: 100%;
+                    margin-top: 50px;
+                    margin-bottom: 50px;
+                    text-align:center;
+                    background-color: $light-blue;
+                }
+
+                .divider-vertical {
+                    display: none !important;
+                }
+
+                .header-dropdown li {
+                    float: none;
+                    width: auto;
+                    margin: 10px 0;
+
+                    a, a:hover {
+                        color: #ccc;
+                        background-color: transparent;
+                    }
+
+                    a:hover {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    .mobile-menu-square {
+        margin-top: 100%;
+    }
+
+    .mobile-menu-thumbnail {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 10px;
+        bottom: 0;
+        left: 10px;
+        right: 0;
+        text-align:center;
+        background-color: $midnight-blue;
+
+        &:hover {
+            text-decoration: none;
+            background-color: $dark-blue;
+          border: 2px solid $midnight-blue;
+        }
+
+        img {
+            width: 50px;
+            margin-bottom: 3px;
+        }
+
+        p:hover {
+            text-decoration: none;
+        }
+
+        p {
+
+            color: white;
+
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            font-size: 13px;
+
+            &#literature-collection {
+                color: $literature-collection;
+            }
+
+            &#authors-collection {
+                color: $authors-collection;
+            }
+
+            &#data-collection {
+                color: $data-collection;
+            }
+
+            &#conferences-collection {
+                color: $conferences-collection;
+            }
+
+            &#jobs-collection {
+                color: $jobs-collection;
+            }
+
+            &#institutions-collection {
+                color: $institutions-collection;
+            }
+
+            &#experiments-collection {
+                color: $experiments-collection;
+            }
+
+            &#journals-collection {
+                color: $journals-collection;
+            }
+        }
+    }
+
+    .modal-backdrop.in {
+        z-index: 0;
+    }
+}
+
+@media only screen and (max-width : 450px) {
+    #mobile-menu > div.col-xxs-6 {
+        width: 50%;
+    }
+}

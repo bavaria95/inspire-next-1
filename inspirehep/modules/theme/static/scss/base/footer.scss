@@ -1,0 +1,58 @@
+/**
+ * -*- mode: text; coding: utf-8; -*-
+ *
+ * This file is part of INSPIRE.
+ * Copyright (C) 2014 CERN.
+
+ * INSPIRE is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * Invenio is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Invenio; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+ */
+
+ /* Footer styles
+-------------------------------------------------- */
+
+.custom-footer .list-unstyled {
+    list-style: none;
+    li {
+        color: $silver;
+        line-height: 1.5;
+    }
+}
+
+section.custom-footer {
+    background: $navbar-inverse-bg;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: #f6f6f6;
+    border: 1px solid #202d3b;
+    a {
+        color: white;
+    }
+}
+
+.custom-footer .footer-divider {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-width: 1px 0 0 0;
+}
+
+.custom-footer .footer-heading {
+    color: lighten($navbar-inverse-bg, 40%);
+    font-size: 18px;
+    text-align: start;
+}
+
+.custom-footer .row .col-xs-4 {
+    padding-left: 10px;
+    padding-right: 10px;
+}

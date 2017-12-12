@@ -1,0 +1,907 @@
+@import "../base/variables";
+
+$hp_table_bg: #fff;
+
+@mixin facet-colors($color) {
+  color: $color !important;
+  &.active {
+    background-color: $color;
+    color: white !important;
+  }
+}
+
+#collections-section {
+  display: none;
+}
+
+.holding-pen {
+
+  a {
+    color: $pete-river;
+  }
+
+  .text-muted {
+    color: $blue-haze;
+  }
+
+  .text-bolder {
+    font-weight: bolder;
+  }
+
+  .main-container {
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 50px;
+  }
+
+  .result-list {
+    .col-md-1 {
+      width: 30px;
+    }
+
+    .col-md-offset-1 {
+      margin-left: 30px;
+    }
+  }
+
+  .holding-page-header {
+    background-color: $midnight-blue;
+    padding: 15px;
+    color: white;
+    height: 50px;
+    font-size: 1.2em;
+    margin-top: -16px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+
+    a {
+      color: white;
+    }
+
+    ul {
+      list-style: none;
+      li {
+        display: inline-block;
+
+        &:not(:last-child):after {
+          content: '|';
+          padding-left: 5px;
+        }
+
+        &.active {
+          color: $silver;
+        }
+      }
+    }
+
+    .pull-right {
+      padding-right: 3%;
+    }
+
+    @media screen and (max-width: 992px) {
+      margin-top: -102px;
+
+    }
+  }
+
+  .overview-container {
+    width: 80%;
+    margin: 0 auto !important;
+  }
+
+  .header-text {
+    color: $wet-asphalt;
+    margin-bottom: 20px;
+  }
+
+  #submission-history-container {
+    background-color: $midnight-blue;
+    height: 10vh;
+  }
+
+  .overview-item {
+
+    background-color: $midnight-blue;
+    min-height: 285px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+
+    a {
+      color: white;
+    }
+
+    .summary {
+      background-color: $concrete;
+      height: 130px;
+      border-radius: 3px 3px 0 0;
+      padding: 10px;
+      color: white;
+
+      h2 {
+
+        font-size: 2.6em;
+        padding-left: 10px;
+        padding-bottom: 5px;
+        margin: 0;
+      }
+
+      h4 {
+        margin: 0;
+        text-transform: uppercase;
+        font-size: .9em;
+        padding: 10px;
+      }
+
+      p {
+        padding-left: 10px;
+      }
+
+      &.new-authors {
+        background-color: $pete-river;
+      }
+
+      &.new-authors {
+        background-color: $pete-river;
+      }
+
+      &.new-authors-updates {
+        background-color: $belize-hole;
+      }
+
+      &.arxiv-harvests {
+        background-color: white;
+        color: $midnight-blue !important;
+
+        a {
+          color: $link-color;
+        }
+      }
+
+      &.new-literature-submissions {
+        background-color: $carrot;
+      }
+    }
+
+    .statuses {
+      -webkit-padding-start: 0px;
+      list-style: none;
+      padding-bottom: 10px;
+
+      li {
+        margin-top: 10px;
+      }
+
+      .status-label {
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  .hp-search-form {
+    input {
+      width: 200px;
+      -webkit-transition: all .5s;
+      -moz-transition: all .5s;
+      transition: all .5s;
+      background-color: $clouds;
+      border: none;
+      padding: 7px;
+      margin-top: -8px;
+      border-radius: 3px;
+      font-size: .9em;
+
+      &:focus {
+        width: 500px;
+      }
+    }
+  }
+
+  .hp-filters {
+    h4 {
+      font-size: 1.1em;
+      font-weight: normal;
+      padding-top: 10px;
+      -webkit-margin-before: 0;
+    }
+
+    hr {
+      display: none;
+    }
+
+    select {
+      margin-bottom: 10px;
+    }
+
+    .hp-facet-item {
+      list-style: none;
+      -webkit-padding-start: 0;
+
+      li {
+        margin-bottom: 4px;
+        padding: 4px 6px;
+        cursor: pointer;
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .clearfix:after { 
+    content: "."; 
+    visibility: hidden; 
+    display: block; 
+    height: 0; 
+    clear: both;
+  }
+
+  .facet-container {
+    background-color: #fff;
+
+    ul li {
+      cursor: pointer;
+      padding: 5px 5px 0px;
+      border-radius: 3px;
+    }
+
+    h4 {
+      color: #000;
+    }
+
+    .facet-label {
+      background-color: #edf3f3;
+    }
+
+    .arxiv-harvests {
+      color: white !important;
+
+      &.active {
+        background-color: white;
+        color: $midnight-blue !important;
+      }
+    }
+
+    .alpha-experiment {
+
+      @include facet-colors($concrete);
+    }
+
+    .new-literature-submissions {
+      @include facet-colors($carrot);
+    }
+
+    .new-authors {
+      @include facet-colors($pete-river);
+    }
+
+    .new-author-updates {
+      @include facet-colors($belize-hole);
+    }
+
+  }
+
+  .error {
+    @include facet-colors($alizarin);
+  }
+
+  .inprogress, .waiting {
+    @include facet-colors($concrete);
+  }
+
+  .attention, .halted {
+    @include facet-colors($sun-flower);
+  }
+
+  .done, .completed {
+    @include facet-colors($green-sea);
+  }
+
+  #hp-list {
+    border-radius: 3px;
+    background-color: transparent;
+    color: $blue-haze;
+    border: none;
+    padding: 16px;
+
+    .hp-item {
+      background-color: $hp_table_bg;
+      margin-bottom: 6px;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      border-radius: 0;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+
+      &.hperror {
+        border-left: 4px solid $alizarin;
+      }
+
+      &.waiting {
+        border-left: 4px solid $silver;
+      }
+
+      &.hpattention {
+        border-left: 4px solid $sun-flower;
+      }
+
+      &.hpdone {
+        border-left: 4px solid $turquoise;
+      }
+
+      .custom-h {
+        margin-top: 0;
+        display: inline;
+      }
+
+        .btn-danger {
+          background-color: $alizarin;
+          color: white;
+        }
+
+        .btn-success {
+          background-color: $green-sea;
+          color: white;
+        }
+
+        .btn-warning {
+          background-color: $orange;
+          color: white;
+        }
+
+        .btn-info {
+          background-color: $belize-hole;
+          color: white;
+        }
+
+      .workflow-type {
+        font-size: 1em;
+        &.new-authors {
+          color: $pete-river;
+        }
+
+        &.new-author-updates {
+          color: $belize-hole;
+        }
+
+        &.arxiv-harvests {
+          color: white;
+        }
+
+        &.new-literature-submissions {
+          color: $carrot;
+        }
+
+        &.alpha-experiment {
+          color: $concrete;
+        }
+      }
+
+      .institution-details {
+        .current {
+          color: white;
+        }
+      }
+    }
+
+  }
+
+  .hp-header-row {
+    background-color: $hp_table_bg;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom: 1px solid $wet-asphalt;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-weight: bolder;
+    font-size: 1.1em;
+  }
+
+  #list-header {
+    display: none;
+  }
+
+  .feedback-fixed-left {
+    display: none;
+  }
+
+  .alert {
+    background-color: $midnight-blue;
+    color: white;
+    font-weight: bolder;
+    border: none;
+    font-size: 1.2em;
+    text-align: center;
+
+    &.alert-success, &.alert-accept_core {
+      background-color: $green-sea;
+      color: $midnight-blue;
+    }
+
+    &.alert-info {
+      background-color: $silver;
+      color: $midnight-blue;
+    }
+
+    &.alert-accept {
+      background-color: $orange;
+      color: $midnight-blue;
+    }
+
+    &.alert-warning {
+      background-color: $sun-flower;
+      color: $midnight-blue;
+    }
+
+    &.alert-danger, &.alert-reject {
+      background-color: $alizarin;
+      color: white;
+      font-weight: normal;
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .alert-danger-area {
+    margin: 5px;
+    background-color: $hp_table_bg;
+    border: none;
+    font-weight: bolder;
+    color: $blue-haze;
+    padding: 15px;
+    height: 63px;
+
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+
+    &:hover {
+      background-color: $alizarin;
+      color: white;
+    }
+
+    p {
+      margin-top: 3px;
+      font-size: 1.2em;
+    }
+    .btn-danger {
+      background-color: $pomegranate;
+    }
+  }
+
+  .detail-section {
+    margin-bottom: 15px;
+
+    .panel-300 {
+      min-height: 300px;
+    }
+
+    .panel-200 {
+      min-height: 200px;
+    }
+
+    .panel-100 {
+      min-height: 100px;
+    }
+
+    .detail-panel {
+      margin: 5px;
+      border-radius: 3px;
+      padding: 15px;
+      background-color: $hp_table_bg;
+
+      h4 {
+        margin: 0;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+      }
+
+      .record-title {
+        font-size: 1.7em;
+      }
+      .record-abstract {
+        color: $blue-haze;
+        display: block;
+      }
+
+      .record-authors {
+        list-style: none;
+        -webkit-padding-start: 0;
+
+        li {
+          display: inline-block;
+        }
+      }
+
+      .advisors {
+        font-size: 1.1em;
+      }
+
+      .subject-area {
+
+        padding: 2px;
+        display: block;
+        margin-bottom: 5px;
+        border-radius: 3px;
+
+        .scheme {
+          background-color: $clouds;
+          padding: 3px 5px;
+          font-size: .8em;
+        }
+      }
+
+      &.keywords, &.subject-areas {
+
+        .btn-delete {
+          padding: 0;
+          font-size: 14px;
+          line-height: 0;
+          border-radius: 0;
+        }
+
+        .keyword-list, .subject-list {
+          height: 235px;
+          overflow-y: auto;
+
+          .list-header {
+            font-weight: bolder;
+            margin-bottom: 6px;
+            color: $blue-haze;
+          }
+
+          .row {
+            padding: 5px;
+            line-height: 1.1em;
+          }
+
+        }
+      }
+
+      .add-control {
+        padding: 10px;
+      }
+
+      .error-data {
+        height: 400px;
+        overflow-y: scroll;
+
+        pre {
+          border: none
+        }
+      }
+
+      .table-block {
+        color: $blue-haze;
+
+        h4 {
+          color: black;
+        }
+
+        .table-header {
+          padding: 10px;
+          border-bottom: 2px solid $midnight-blue;
+          font-weight: bolder;
+        }
+
+        .table-body {
+          height: 200px;
+          overflow-y: auto;
+
+          &.references {
+            height: 300px;
+          }
+
+          &.links {
+            height: 100px;
+          }
+
+          .table-row {
+
+            padding: 10px;
+            border-bottom: 1px solid $midnight-blue;
+          }
+        }
+      }
+    }
+  }
+}
+
+.reject {
+  color: $alizarin;
+}
+
+.accept_core {
+  color: $green-sea;
+}
+
+.accept {
+  color: $orange;
+}
+
+.hp-item {
+
+  &.no-results {
+    padding: 50px !important;
+    font-size: 1.7em;
+    border-left: none !important;
+    text-align: center;
+  }
+
+  .reject {
+    background-color: $alizarin;
+    color: white;
+  }
+
+  .accept_core {
+    background-color: $green-sea;
+    color: white;
+  }
+
+  .accept, .accept_curate {
+    background-color: $orange;
+    color: $dark-blue;
+  }
+
+  .accept_core_keyword {
+    color: $green-sea;
+  }
+
+  .accept_keyword {
+    color: $orange;
+  }
+
+}
+
+.action-info {
+  background-color: $clouds;
+  display: inline-block;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: .7em;
+  margin-right: 4px;
+  margin-top: 1px;
+}
+
+.decision {
+
+  &.large {
+    li {
+      padding: 6px 9px;
+      font-size: 1.2em;
+    }
+  }
+
+  .decision-keywords {
+    p {
+      color: $blue-haze;
+      font-weight: bolder;
+    }
+
+    .label-success {
+      color: $midnight-blue;
+      font-size: 0.8em;
+    }
+
+    .list {
+      height: 140px;
+      overflow-y: auto;
+
+      .row {
+        padding: 4px;
+      }
+    }
+
+  }
+
+  .automatic-decision {
+    font-size: 1.1em;
+    padding-bottom: 10px;
+
+    .reject {
+      background-color: transparent;
+      color: $alizarin;
+    }
+
+    .accept_core {
+      background-color: transparent;
+      color: $green-sea
+    }
+
+    .accept, .accept_curate {
+      background-color: transparent;
+      color: $orange;
+    }
+  }
+
+}
+
+.btn-danger-weak {
+  background-color: $alizarin;
+  color: white;
+  opacity: 0.3;
+  border: none;
+}
+
+.subject-terms {
+  list-style: none;
+  -webkit-padding-start: 0;
+
+  li {
+    background-color: $clouds;
+    border-radius: 3px;
+    margin: 2px;
+    font-size: .9em;
+    padding: 3px 5px;
+    display: inline-block;
+
+  }
+}
+
+/*on off switch*/
+
+.onoffswitch {
+  position: relative;
+  width: 44px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+  display: none;
+}
+
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  height: 16px;
+  padding: 0;
+  line-height: 16px;
+  border: 0px solid $concrete;
+  border-radius: 11px;
+  background-color: $alizarin;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.onoffswitch-label:before {
+  content: "";
+  display: block;
+  width: 11px;
+  margin: 4px;
+  background: #FFFFFF;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 21px;
+  border-radius: 11px;
+  box-shadow: 0 6px 12px 0px $midnight-blue;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+  background-color: $green-sea;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+  border-color: $green-sea;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+  right: 0;
+  background-color: #FFFFFF;
+  box-shadow: 3px 6px 18px 0 rgba(0, 0, 0, 0.2);
+}
+
+.editable-wrap {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  .editable-controls {
+    width: 100%;
+
+    .editable-input {
+      width: 85%;
+    }
+
+    textarea {
+      height: 192px;
+    }
+  }
+
+}
+
+.ui-menu {
+  background-color: white;
+
+  list-style: none;
+  padding: 5px;
+  margin: 0;
+  display: block;
+  float: left;
+}
+
+.ui-menu .ui-menu {
+  margin-top: -3px;
+}
+
+.ui-menu .ui-menu-item {
+  margin: 0;
+  padding: 0;
+  zoom: 1;
+  float: left;
+  clear: left;
+  width: 100%;
+}
+
+.ui-menu .ui-menu-item a {
+  text-decoration: none;
+  display: block;
+  padding: .2em .4em;
+  line-height: 1.5;
+  zoom: 1;
+}
+
+.ui-menu .ui-menu-item a.focus,
+.ui-menu .ui-menu-item a.active {
+  font-weight: bolder;
+  margin: -1px;
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
+}
+
+.red-color {
+  color: $alizarin;
+}
+
+.green-color {
+  color: $green-sea
+}
+
+#reject-reason {
+    width: 100%;
+    min-height: 200px;
+}
+
+.text-wrap {
+    white-space: pre-wrap;
+}
+
+.reason-link {
+    font-size: 0.9em;
+    color: $clouds !important;
+}
+
+.decision-btn-wrapper {
+    .row {
+        margin-bottom: 5px;
+    }
+
+    i {
+        margin-right: 5px;
+    }
+}
+
+#holdingpen-save-button {
+    white-space: normal;
+}

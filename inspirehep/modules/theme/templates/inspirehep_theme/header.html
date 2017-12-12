@@ -1,0 +1,236 @@
+{#
+# This file is part of INSPIRE.
+# Copyright (C) 2014, 2015, 2016 CERN.
+#
+# INSPIRE is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# INSPIRE is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with INSPIRE; if not, write to the Free Software Foundation, Inc.,
+# 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#}
+
+{#
+## This file contains header part of main page template.
+##
+## Usage:
+## {% include 'inspirehep_theme/header.html' %}
+#}
+
+{# Work-around for collection name #}
+
+{% if collection is defined %}
+ {% set collection_name = collection| sanitize_collection_name %}
+{% else %}
+  {% set collection_name = request.url | find_collection_from_url %}
+{% endif %}
+
+
+
+
+<section id="header-section">
+    <div class="collapse navbar-collapse" id="navigation">
+    </div>
+
+  <nav id="topnav" class="navbar navbar-fixed-top navbar-inverse navbar-custom" role="navigation">
+    <div class="navbar-header">
+      <div id="mobile-header">
+        <a class="navbar-brand" href="{{ url_for('inspirehep_theme.index') }}">
+          <span id="{{ collection_name | sanitize_collection_name }}-logo-collection">
+            {% include 'inspirehep_theme/labs-logo.svg' %}
+          </span>
+        </a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topnav-right">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+      </div>
+      <div class="navbar-collapse navbar-ex1-collapse collapse overflow" id="topnav-right">
+        <div class="row" id="mobile-menu">
+          {% if config['INSPIRE_FULL_THEME'] %}
+          <div class="col-sm-3 col-xs-4 col-xxs-6">
+            <div class="mobile-menu-square"></div>
+            <a href="{{ url_for("inspirehep_theme.index") }}" class="mobile-menu-thumbnail">
+              <img src="{{ url_for('static', filename='images/mobile-menu-icon-literature.svg') }}">
+              <p>Literature</p>
+            </a>
+          </div>
+          <div class="col-sm-3 col-xs-4 col-xxs-6">
+            <div class="mobile-menu-square"></div>
+            <a href="{{ url_for("inspirehep_theme.hepnames") }}" class="mobile-menu-thumbnail">
+              <img src="{{ url_for('static', filename='images/mobile-menu-icon-authors.svg') }}" >
+              <p>Authors</p>
+            </a>
+          </div>
+          <div class="col-sm-3 col-xs-4 col-xxs-6">
+            <div class="mobile-menu-square"></div>
+            <a href="{{ url_for("inspirehep_theme.data") }}" class="mobile-menu-thumbnail">
+              <img src="{{ url_for('static', filename='images/mobile-menu-icon-data.svg') }}" >
+              <p>Data</p>
+            </a>
+         </div>
+           <div class="col-sm-3 col-xs-4 col-xxs-6">
+            <div class="mobile-menu-square"></div>
+            <a href="{{ url_for("inspirehep_theme.conferences") }}" class="mobile-menu-thumbnail">
+              <img src="{{ url_for('static', filename='images/mobile-menu-icon-conferences.svg') }}" >
+              <p>Conferences</p>
+            </a>
+         </div>
+           <div class="col-sm-3 col-xs-4 col-xxs-6">
+            <div class="mobile-menu-square"></div>
+            <a href="{{ url_for("inspirehep_theme.jobs") }}" class="mobile-menu-thumbnail">
+              <img src="{{ url_for('static', filename='images/mobile-menu-icon-jobs.svg') }}" >
+              <p>Jobs</p>
+            </a>
+          </div>
+          <div class="col-sm-3 col-xs-4 col-xxs-6">
+            <div class="mobile-menu-square"></div>
+            <a href="{{ url_for("inspirehep_theme.institutions") }}" class="mobile-menu-thumbnail">
+              <img src="{{ url_for('static', filename='images/mobile-menu-icon-institutions.svg') }}" >
+              <p>Institutions</p>
+            </a>
+          </div>
+          <div class="col-sm-3 col-xs-4 col-xxs-6">
+            <div class="mobile-menu-square"></div>
+            <a href="{{ url_for("inspirehep_theme.experiments") }}" class="mobile-menu-thumbnail">
+              <img src="{{ url_for('static', filename='images/mobile-menu-icon-experiments.svg') }}" >
+              <p>Experiments</p>
+            </a>
+         </div>
+           <div class="col-sm-3 col-xs-4 col-xxs-6">
+            <div class="mobile-menu-square"></div>
+            <a href="{{ url_for("inspirehep_theme.journals") }}" class="mobile-menu-thumbnail">
+              <img src="{{ url_for('static', filename='images/mobile-menu-icon-journals.svg') }}" >
+              <p>Journals</p>
+            </a>
+         </div>
+          {% endif %}
+        </div>
+
+        <ul class="nav navbar-nav" id="header-links">
+          {% if config['INSPIRE_FULL_THEME'] %}
+          <li class="dropdown top-header-dropdown">
+            <a href="" id="tools-dropdown" class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <i class="fa fa-wrench"></i> Tools
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu header-dropdown" aria-labelledby="dropdownTools">
+              <li><a href="https://inspirehep.net/textmining/">Reference extractor</a></li>
+              <li><a href="https://inspirehep.net/info/hep/tools/bibliography_generate">Bibliography generator</a></li>
+              <li><a href="https://inspirehep.net/info/hep/tools/index">User-developed tools</a></li>
+              {% if current_user|is_cataloger %}
+                <li><a href="{{ url_for('inspire_tools.tools_page') }}">Cataloging tools</a></li>
+              {% endif %}
+            </ul>
+          </li>
+          <li class="dropdown top-header-dropdown">
+            <a href="" id="dropdown-links-stats" class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <i class="fa fa-link"></i> Links and stats
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu header-dropdown" aria-labelledby="dropdownLinksStats">
+              <li><a href="http://inspirehep.net/info/hep/stats/topcites/index">Top cites</a></li>
+              <li><a href="http://inspirehep.net/search?of=hcs&action_search=Search">HEP Citesummary</a></li>
+              <li><a href="">Other databases</a></li>
+              <li><a href="">External resources</a></li>
+            </ul>
+          </li>
+          {% endif %}
+          <li {% if request.blueprint == blueprint|e %} class="active" {% endif %}>
+            <a id="header-submit-link" href="{{ url_for('inspirehep_literature_suggest.create') }}">{{- _('Submit') -}}</a>
+          </li>
+          <li>
+            <a id="header-help-link" href="https://labs.inspirehep.net/help">{{- _('Help') -}}</a>
+          </li>
+          <li class="divider-vertical"></li>
+          {%- if not current_user.is_authenticated %}
+          <li id="mobile-sign-in">
+            <a class="" href="{{url_for_security('login', next=request.path)}}">
+              <i class="glyphicon glyphicon-log-in"></i> {{ _("Sign in") }}
+            </a>
+          </li>
+          {%- else %}
+          <li class="dropdown" >
+            <a id="user-info" class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="glyphicon glyphicon-user"></i>
+              {%- if current_user.email %}
+                My account
+              {%- endif %}
+              <!-- <span class="caret"></span> -->
+              <span id="arrow-handler" class="down-arrow right-arrow-small-screen"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-arrow" role="menu">
+              <li>
+                <a href="{{ url_for('invenio_userprofiles.profile') }}" class="list-group-item list-item">
+                  <div class="dropdown-element-body">
+                    <span class="custom-dropdown-header">{{ _('Settings') }}</span>
+                    <span class="text-muted small-text">{{ _('Manage your personal settings') }}</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <div class="text-center">
+                  <a  role="menuitem" tabindex="-1" href="{{ url_for_security('logout') }}">
+                    <button type="button" class="btn btn-info btn-sign-out">{{ _('Sign out') }}</button>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          {%- endif %}
+        </ul>
+      </div>
+      <div id="top-search-bar" class="{{ collection_name }}">
+        {% if request.endpoint in ['inspirehep_search.search'] %}
+          <invenio-search-autocomplete-bar
+            template="{{ url_for('static', filename='node_modules/inspirehep-search-js/dist/templates/searchbar.html') }}"
+            placeholder="Search {{collection_name}}"
+            collection={{collection_name}}>
+          </invenio-search-autocomplete-bar>
+        {% elif request.blueprint == 'invenio_records_ui' %}
+          {% include 'inspirehep_theme/search/form/form.html' %}
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+</section>
+
+{% if config['INSPIRE_FULL_THEME'] %}
+<section id="collections-section">
+  <nav id="collections-nav">
+      <a href="/literature" id="literature-collection" class="{{collection_name | collection_select_current("Literature") }}">
+        Literature
+      </a>
+      <a href="/authors" id="authors-collection" class="{{collection_name | collection_select_current("Authors") }}">
+        Authors
+      </a>
+      <a href="/data" id="data-collection" class="{{collection_name | collection_select_current("Data") }}">
+        Data
+      </a>
+      <a href="/conferences" id="conferences-collection" class="{{collection_name | collection_select_current("Conferences") }}">
+        Conferences
+      </a>
+      <a href="/jobs" id="jobs-collection" class="{{collection_name | collection_select_current("Jobs") }}">
+        Jobs
+      </a>
+      <a href="/institutions" id="institutions-collection" class="{{collection_name | collection_select_current("Institutions") }}">
+        Institutions
+      </a>
+      <a href="/experiments" id="experiments-collection" class="{{collection_name | collection_select_current("Experiments") }}">
+        Experiments
+      </a>
+      <a href="/journals" id="journals-collection" class="{{collection_name | collection_select_current("Journals") }}">
+        Journals
+      </a>
+  </nav>
+</section>
+{% endif %}
