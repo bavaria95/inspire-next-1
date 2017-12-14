@@ -1,1 +1,1 @@
-# inspire-next
+# inspire-next.
