@@ -63,7 +63,7 @@ def test_institutions_typeahead(login):
 
 def test_experiments_typehead(login):
     create_author.go_to()
-    assert create_author.write_experiment('atl', 'ATLAS').has_error()
+    assert create_author.write_experiment('cms', 'ATLAS').has_error()
 
 
 def test_advisors_typehead(login):
